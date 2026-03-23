@@ -18,7 +18,10 @@
 4)Вывод нового дерева с измененнными элементами
 
 ### Тестирование
-<img width="455" height="771" alt="image" src="https://github.com/user-attachments/assets/2ba9f6fe-787d-4545-b140-c6d83ed3d3e4" />
+<img width="782" height="264" alt="image" src="https://github.com/user-attachments/assets/b5613af5-6ebe-4839-ae15-16453744184f" />
+<img width="491" height="445" alt="image" src="https://github.com/user-attachments/assets/98ea083d-fee3-4d7d-b34b-d341fe45ae32" />
+
+
 
 
 
