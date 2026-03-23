@@ -1,16 +1,36 @@
 ﻿type Tree = 
     | Node of string * Tree * Tree
-    | Empty
+    | Nil
 
-//вывод дерева
-let rec Print tree space = 
+let rec print tree space = //вывод дерева
     match tree with
-    | Node (data, left, right)
-        ->printfn "%sNode %s" space data
-          Print left (space + "\t")
-          Print right (space+ "\t")
-    | Empty
+    | Node (value, left, right)
+        ->print right (space+ "\t")
+          printfn "%sNode %s" space value
+          print left (space + "\t")
+    | Nil
         -> ()
+ 
+let rec insert value tree = //вставка
+    match tree with
+    |Nil -> Node(value, Nil, Nil)
+    |Node(v,left,right) -> 
+        if value < v then
+            Node(v, insert value left, right)
+        elif value > v then
+            Node(v, left, insert value right)
+        else
+            tree
+
+
+let rec mapTree f tree = //создание нового дерева
+    match tree with
+    | Nil -> Nil
+    | Node (value, left, right) ->
+        let newValue = f value
+        let newLeft = mapTree f left
+        let newRight = mapTree f right
+        Node(newValue, newLeft, newRight)
 
 let rnd = System.Random() 
 
@@ -18,44 +38,32 @@ let rnd = System.Random()
 let alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ" 
 
 //создание случайной строки
-let rec RandString (str:string) (len:int) = 
+let rec randString (str:string) (len:int) = 
     if len = 0 then
         str
     else
         //случайный индекс от 0 до длины алфавита
         let randomIndex = rnd.Next(alphabet.Length)
         let randomChar = alphabet.[randomIndex].ToString()
-        RandString (str+randomChar) (len-1)
-
-//создание нового дерева
-let rec MapTree conc tree =
-    match tree with
-    | Empty -> Empty
-    | Node (value, left, right) ->
-        let newValue = conc value
-        let newLeft = MapTree conc left
-        let newRight = MapTree conc right
-        Node(newValue, newLeft, newRight)
+        randString (str+randomChar) (len-1)
 
 let conc (s:string) = 
     s+s
 
-//заполнение дерева
-let rec FillTree depth = 
-    if depth = 0 then Empty
+let rec fillTree n tree = //заполнение дерева
+    if n = 0 then
+        tree
     else
-        let value = RandString "" 4
-        let left = FillTree (depth - 1)
-        let right = FillTree (depth - 1)
-        Node(value, left, right)
+        let value = randString "" 4
+        fillTree (n - 1) (insert value tree)
 
 [<EntryPoint>]
 let main argv =
-    let binTree = FillTree(4)
+    let binTree = fillTree 8 Nil
     printfn "Исходное дерево:"
-    Print binTree ""
+    print binTree ""
 
-    let newBinTree = MapTree conc binTree
+    let newBinTree = mapTree conc binTree
     printfn "\nДерево после изменения:"
-    Print newBinTree ""
+    print newBinTree ""
     0
