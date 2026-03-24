@@ -50,9 +50,9 @@
 
 ### Тестирование
 
-<img width="426" height="417" alt="image" src="https://github.com/user-attachments/assets/218253e5-ca79-45b9-9ead-8f5a3f8592e1" />
-<img width="426" height="421" alt="image" src="https://github.com/user-attachments/assets/a77fdca2-ce2a-41c9-9b00-3c48243093be" />
-<img width="421" height="421" alt="image" src="https://github.com/user-attachments/assets/d29f8447-a63e-44a5-a454-86d593c7a40e" />
+<img width="427" height="269" alt="image" src="https://github.com/user-attachments/assets/7901ffed-bcf7-4159-b3a4-c12c6707b0bc" />
+<img width="501" height="265" alt="image" src="https://github.com/user-attachments/assets/72bf411c-6aa8-40e7-818f-94dd4cc6b5c0" />
+
 
 
 
